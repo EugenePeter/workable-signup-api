@@ -1,0 +1,30 @@
+import express from "express";
+import dotenv from "dotenv";
+import expressPlayground from "graphql-playground-middleware-express";
+import { initializeApolloServer } from "./domains";
+
+import mongoose from "mongoose";
+dotenv.config();
+const {
+  CONNECTIONSTRING = "mongodb+srv://workableCompanyList:0HCuQLITK1ncdo3v@cluster0.khdnm.mongodb.net/workable-signup-api?retryWrites=true&w=majority",
+} = process.env;
+
+const startServer = async () => {
+  const app = express();
+  // app.get("/", expressPlayground({ endpoint: "/graphql" }));
+  app.get("/", (req, res) => {
+    res.send("welcome");
+  });
+  try {
+    await mongoose.connect(CONNECTIONSTRING);
+    console.log("CONNECTED TO MONGODB");
+  } catch (e) {
+    console.log("error:", e);
+  }
+  initializeApolloServer(app);
+  app.listen(process.env.PORT, () => {
+    console.log(`apps is running on PORT: ${process.env.PORT}`);
+  });
+};
+
+startServer();
