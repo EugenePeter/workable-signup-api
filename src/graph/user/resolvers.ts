@@ -1,5 +1,5 @@
 // import { Cat } from "../../models";
-import { Company } from "../../models";
+import { Company } from "../../utils";
 
 export const user_resolvers = {
   Query: {
@@ -9,6 +9,7 @@ export const user_resolvers = {
       // console.log("doesEmailExist result:", result);
       // if (result) throw new Error("email exist");
       try {
+        console.log("GRAPH EMAIL:", email);
         const result = await Company.findOne({ email });
         console.log("doesEmailExist result:", result);
         if (result) throw new Error("email exist");

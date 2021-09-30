@@ -1,7 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import expressPlayground from "graphql-playground-middleware-express";
-import { initializeApolloServer } from "./domains";
+import { initializeApolloServer } from "./graph";
+import indexRouter from "./routes";
+import cors from "cors";
 
 import mongoose from "mongoose";
 dotenv.config();
@@ -12,9 +14,18 @@ const {
 const startServer = async () => {
   const app = express();
   // app.get("/", expressPlayground({ endpoint: "/graphql" }));
+  app.use(express.urlencoded({ extended: false }));
+  app.use(express.json());
+  app.use(cors());
+  app.use("/", indexRouter);
   app.get("/", (req, res) => {
     res.send("welcome");
   });
+
+  app.get("/user-email", (req, res) => {
+    res.send("welcome");
+  });
+
   try {
     await mongoose.connect(CONNECTIONSTRING);
     console.log("CONNECTED TO MONGODB");

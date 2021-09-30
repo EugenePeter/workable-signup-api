@@ -1,15 +1,6 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
+// const Employer = require("../model/EmployerModel");
+// const jwt = require("jsonwebtoken");
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -47,58 +38,38 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.user_resolvers = void 0;
-// import { Cat } from "../../models";
-var models_1 = require("../../models");
-exports.user_resolvers = {
-    Query: {
-        doesEmailExist: function (parent, _a, context) {
-            var email = _a.email;
-            return __awaiter(void 0, void 0, void 0, function () {
-                var result, e_1;
-                return __generator(this, function (_b) {
-                    switch (_b.label) {
-                        case 0:
-                            console.log("PARENT:", parent);
-                            _b.label = 1;
-                        case 1:
-                            _b.trys.push([1, 3, , 4]);
-                            return [4 /*yield*/, models_1.Company.findOne({ email: email })];
-                        case 2:
-                            result = _b.sent();
-                            console.log("doesEmailExist result:", result);
-                            if (result)
-                                throw new Error("email exist");
-                            return [3 /*break*/, 4];
-                        case 3:
-                            e_1 = _b.sent();
-                            console.log("EMAIL ALREADY EXIST", e_1);
-                            return [2 /*return*/, e_1];
-                        case 4: return [2 /*return*/];
-                    }
+exports.registerCompany = void 0;
+var models_1 = require("../models");
+var registerCompany = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var user, result, error_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                user = new models_1.User(req.body);
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, user.register()];
+            case 2:
+                result = _a.sent();
+                console.log("RESULTS", result);
+                res.json({
+                    registerSuccess: true,
+                    message: "Company registered",
+                    result: result,
                 });
-            });
-        },
-    },
-    Mutation: {
-        createCompany: function (_, _a) {
-            var params = _a.params;
-            return __awaiter(void 0, void 0, void 0, function () {
-                var company;
-                return __generator(this, function (_b) {
-                    switch (_b.label) {
-                        case 0:
-                            console.log("ARG:", params);
-                            company = models_1.Company.build(__assign({}, params));
-                            return [4 /*yield*/, company.save()];
-                        case 1:
-                            _b.sent();
-                            console.log("COMPANY:", company);
-                            return [2 /*return*/, company];
-                    }
+                return [3 /*break*/, 4];
+            case 3:
+                error_1 = _a.sent();
+                console.log("CONTROLLER SIGN UP ERROR:", error_1);
+                res.status(400).send({
+                    registerSuccess: false,
+                    errorMessage: error_1,
                 });
-            });
-        },
-    },
-};
-//# sourceMappingURL=resolvers.js.map
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); };
+exports.registerCompany = registerCompany;
+//# sourceMappingURL=signup.js.map

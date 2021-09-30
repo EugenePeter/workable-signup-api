@@ -1,4 +1,6 @@
 "use strict";
+// const Employer = require("../model/EmployerModel");
+// const jwt = require("jsonwebtoken");
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,55 +37,45 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var express_1 = __importDefault(require("express"));
-var dotenv_1 = __importDefault(require("dotenv"));
-var graph_1 = require("./graph");
-var routes_1 = __importDefault(require("./routes"));
-var cors_1 = __importDefault(require("cors"));
-var mongoose_1 = __importDefault(require("mongoose"));
-dotenv_1.default.config();
-var _a = process.env.CONNECTIONSTRING, CONNECTIONSTRING = _a === void 0 ? "mongodb+srv://workableCompanyList:0HCuQLITK1ncdo3v@cluster0.khdnm.mongodb.net/workable-signup-api?retryWrites=true&w=majority" : _a;
-var startServer = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var app, e_1;
+exports.login = void 0;
+var login = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                app = express_1.default();
-                // app.get("/", expressPlayground({ endpoint: "/graphql" }));
-                app.use(express_1.default.urlencoded({ extended: false }));
-                app.use(express_1.default.json());
-                app.use(cors_1.default());
-                app.use("/", routes_1.default);
-                app.get("/", function (req, res) {
-                    res.send("welcome");
-                });
-                app.get("/user-email", function (req, res) {
-                    res.send("welcome");
-                });
-                _a.label = 1;
-            case 1:
-                _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, mongoose_1.default.connect(CONNECTIONSTRING)];
-            case 2:
-                _a.sent();
-                console.log("CONNECTED TO MONGODB");
-                return [3 /*break*/, 4];
-            case 3:
-                e_1 = _a.sent();
-                console.log("error:", e_1);
-                return [3 /*break*/, 4];
-            case 4:
-                graph_1.initializeApolloServer(app);
-                app.listen(process.env.PORT, function () {
-                    console.log("apps is running on PORT: " + process.env.PORT);
-                });
-                return [2 /*return*/];
+        // console.log("///////////////////// from controller");
+        // console.log(req.body);
+        // let user = new Employer(req.body);
+        try {
+            // const result = await user.login();
+            // console.log(result);
+            // console.log(result);
+            // console.log(result);
+            // console.log(result);
+            // if (result) {
+            //   res.json({
+            //     token: jwt.sign(
+            //       {
+            //         username: user.data.username,
+            //       },
+            //       process.env.JWTSECRET,
+            //       { expiresIn: "1d" }
+            //     ),
+            //     id: result.id,
+            //     room: result.room,
+            //     employerName: user.data.employerName,
+            //     status: true,
+            //     isOnline: result.isOnline,
+            //     loginMessage: "You have succesfully logged in",
+            //   });
+            // }
         }
+        catch (e) {
+            // res.status(400).send({
+            //   registerSuccess: false,
+            //   errorMessage: e,
+            // });
+        }
+        return [2 /*return*/];
     });
 }); };
-startServer();
-//# sourceMappingURL=app.js.map
+exports.login = login;
+//# sourceMappingURL=login.js.map
