@@ -20,7 +20,7 @@ var companySchema = new mongoose_1.default.Schema({
     },
     created_date: {
         type: String,
-        required: true,
+        required: false,
     },
 });
 companySchema.statics.build = function (attrs) {

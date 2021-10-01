@@ -36,7 +36,7 @@ const companySchema = new mongoose.Schema({
   },
   created_date: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 
