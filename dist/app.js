@@ -48,7 +48,7 @@ var mongoose_1 = __importDefault(require("mongoose"));
 dotenv_1.default.config();
 var _a = process.env.CONNECTIONSTRING, CONNECTIONSTRING = _a === void 0 ? "mongodb+srv://workableCompanyList:0HCuQLITK1ncdo3v@cluster0.khdnm.mongodb.net/workable-signup-api?retryWrites=true&w=majority" : _a;
 var startServer = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var app, e_1;
+    var app, corsOptions, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -56,7 +56,12 @@ var startServer = function () { return __awaiter(void 0, void 0, void 0, functio
                 // app.get("/", expressPlayground({ endpoint: "/graphql" }));
                 app.use(express_1.default.urlencoded({ extended: false }));
                 app.use(express_1.default.json());
-                app.use(cors_1.default());
+                corsOptions = {
+                    origin: "*",
+                    optionsSuccessStatus: 200,
+                    credentials: false,
+                };
+                app.use(cors_1.default(corsOptions));
                 app.use("/", routes_1.default);
                 app.get("/", function (req, res) {
                     res.send("welcome");

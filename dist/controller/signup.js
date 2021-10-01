@@ -41,7 +41,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.registerCompany = void 0;
 var models_1 = require("../models");
 var registerCompany = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var user, result, error_1;
+    var user, result, company_name, email, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -53,17 +53,19 @@ var registerCompany = function (req, res) { return __awaiter(void 0, void 0, voi
             case 2:
                 result = _a.sent();
                 console.log("RESULTS", result);
+                company_name = result.company_name, email = result.email;
                 res.json({
-                    registerSuccess: true,
+                    successfuly_registered: true,
                     message: "Company registered",
-                    result: result,
+                    company_name: company_name,
+                    email: email,
                 });
                 return [3 /*break*/, 4];
             case 3:
                 error_1 = _a.sent();
                 console.log("CONTROLLER SIGN UP ERROR:", error_1);
-                res.status(400).send({
-                    registerSuccess: false,
+                res.status(400).json({
+                    successfuly_registered: false,
                     errorMessage: error_1,
                 });
                 return [3 /*break*/, 4];

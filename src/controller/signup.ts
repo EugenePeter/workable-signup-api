@@ -9,15 +9,17 @@ export const registerCompany = async (req: any, res: any) => {
   try {
     const result = await user.register();
     console.log("RESULTS", result);
+    const { company_name, email } = result;
     res.json({
-      registerSuccess: true,
+      successfuly_registered: true,
       message: "Company registered",
-      result,
+      company_name,
+      email,
     });
   } catch (error: any) {
     console.log("CONTROLLER SIGN UP ERROR:", error);
-    res.status(400).send({
-      registerSuccess: false,
+    res.status(400).json({
+      successfuly_registered: false,
       errorMessage: error,
     });
   }
