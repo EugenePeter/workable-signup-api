@@ -66,11 +66,11 @@ export class User<T extends Event> {
   async register() {
     try {
       // Step #1: Validate user data
-      this.cleanUp();
-      await this.validate();
+      // this.cleanUp();
+      // await this.validate();
       // Step #2: Only if there are no validation errors
       // then save the user data into a database
-      if (this.errors.length > 0) throw this.errors;
+      // if (this.errors.length > 0) throw this.errors;
 
       // hash user password
       let salt = bcrypt.genSaltSync(10);
