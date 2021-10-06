@@ -52,6 +52,7 @@ var registerCompany = function (req, res) { return __awaiter(void 0, void 0, voi
                 return [4 /*yield*/, user.register()];
             case 2:
                 result = _a.sent();
+                console.log("i am running inside register user controller");
                 console.log("RESULTS", result);
                 company_name = result.company_name, email = result.email;
                 res.json({
@@ -63,7 +64,7 @@ var registerCompany = function (req, res) { return __awaiter(void 0, void 0, voi
                 return [3 /*break*/, 4];
             case 3:
                 error_1 = _a.sent();
-                console.log("CONTROLLER SIGN UP ERROR:", error_1);
+                console.log("ERROR FROM SIGN UP CONTROLLER:", error_1);
                 res.status(400).json({
                     successfuly_registered: false,
                     errorMessage: error_1,

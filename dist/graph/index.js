@@ -44,8 +44,8 @@ exports.initializeApolloServer = void 0;
 var apollo_server_express_1 = require("apollo-server-express");
 var apollo_server_express_2 = require("apollo-server-express");
 var user_1 = require("./user");
-var defaultTypeDefs = (0, apollo_server_express_2.gql)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  type Query {\n    _empty: String\n  }\n"], ["\n  type Query {\n    _empty: String\n  }\n"])));
-var schema = (0, apollo_server_express_1.makeExecutableSchema)({
+var defaultTypeDefs = apollo_server_express_2.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  type Query {\n    _empty: String\n  }\n"], ["\n  type Query {\n    _empty: String\n  }\n"])));
+var schema = apollo_server_express_1.makeExecutableSchema({
     typeDefs: [defaultTypeDefs, user_1.user_type_defs],
     resolvers: [user_1.user_resolvers],
 });
