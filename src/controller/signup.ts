@@ -9,6 +9,7 @@ export const registerCompany = async (req: any, res: any) => {
   try {
     const result = await user.register();
     console.log("RESULTS", result);
+    //@ts-ignore
     const { company_name, email } = result;
     res.json({
       successfuly_registered: true,
