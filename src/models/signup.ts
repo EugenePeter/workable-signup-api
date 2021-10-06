@@ -43,7 +43,9 @@ export class User<T extends Event> {
       this.data.company_name == "" && this.errors.push("You must provide a company name.");
 
       this.data.email == "" && this.errors.push("You must provide an email address.");
-      this.data.email !== "" && !validator.isEmail(this.data.email) && this.errors.push("You must provide an valid email.");
+      this.data.email !== "" &&
+        !validator.isEmail(this.data.email) &&
+        this.errors.push("You must provide an valid email.");
 
       this.data.password == "" && this.errors.push("You must provide a password.");
       this.data.password.length < 6 && this.errors.push("Password must be at least 6 characters.");
@@ -81,6 +83,7 @@ export class User<T extends Event> {
       console.log("COMPANY:", company);
       return company;
     } catch (e) {
+      console.log("REGISTER ERROR:", e);
       throw this.errors;
     }
   }
