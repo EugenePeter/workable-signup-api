@@ -52,7 +52,7 @@ var startServer = function () { return __awaiter(void 0, void 0, void 0, functio
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                app = express_1.default();
+                app = (0, express_1.default)();
                 // app.get("/", expressPlayground({ endpoint: "/graphql" }));
                 app.use(express_1.default.urlencoded({ extended: false }));
                 app.use(express_1.default.json());
@@ -61,7 +61,7 @@ var startServer = function () { return __awaiter(void 0, void 0, void 0, functio
                     optionsSuccessStatus: 200,
                     credentials: false,
                 };
-                app.use(cors_1.default(corsOptions));
+                app.use((0, cors_1.default)(corsOptions));
                 app.use("/", routes_1.default);
                 app.get("/", function (req, res) {
                     res.send("welcome");
@@ -84,7 +84,7 @@ var startServer = function () { return __awaiter(void 0, void 0, void 0, functio
                 console.log("error:", e_1);
                 return [3 /*break*/, 4];
             case 4:
-                graph_1.initializeApolloServer(app);
+                (0, graph_1.initializeApolloServer)(app);
                 app.listen(process.env.PORT, function () {
                     console.log("apps is running on PORT: " + process.env.PORT);
                 });

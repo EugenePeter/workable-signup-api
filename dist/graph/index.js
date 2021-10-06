@@ -47,8 +47,8 @@ var resolvers_1 = require("./artwork/resolvers");
 var typeDefs_1 = require("./artwork/typeDefs");
 var user_1 = require("./user");
 var unsplash_api_1 = require("../utils/unsplash.api");
-var defaultTypeDefs = apollo_server_express_2.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  type Query {\n    _empty: String\n  }\n"], ["\n  type Query {\n    _empty: String\n  }\n"])));
-var schema = apollo_server_express_1.makeExecutableSchema({
+var defaultTypeDefs = (0, apollo_server_express_2.gql)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  type Query {\n    _empty: String\n  }\n"], ["\n  type Query {\n    _empty: String\n  }\n"])));
+var schema = (0, apollo_server_express_1.makeExecutableSchema)({
     typeDefs: [defaultTypeDefs, typeDefs_1.artist_type_Defs, user_1.user_type_defs],
     resolvers: [resolvers_1.artist_resolvers, user_1.user_resolvers],
 });

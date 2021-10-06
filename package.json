@@ -6,11 +6,14 @@
   "license": "ISC",
   "main": "./dist/app.js",
   "engines": {
-    "node": "14.15.3",
+    "node": "14.x",
     "yarn": "1.22.10"
   },
   "scripts": {
-    "start": "dist/app.js"
+    "watch": "tsc -w",
+    "develop": "ts-node-dev ./src/app.ts",
+    "start": "rm -rf dist && tsc && nodemon dist/app.js",
+    "build": "rm -rf dist && tsc"
   },
   "dependencies": {
     "@types/node-fetch": "^2.5.10",

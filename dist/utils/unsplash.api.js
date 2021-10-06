@@ -43,7 +43,7 @@ exports.getAllPhotos = void 0;
 var unsplash_js_1 = require("unsplash-js");
 var _a = process.env.ACCESSKEY, ACCESSKEY = _a === void 0 ? "SPJJ-8NfD23MjpKbZcdMz-aa6PiwUJoiHHISuaMTn04" : _a;
 var node_fetch_1 = __importDefault(require("node-fetch"));
-var unsplash = unsplash_js_1.createApi({
+var unsplash = (0, unsplash_js_1.createApi)({
     accessKey: ACCESSKEY,
     fetch: node_fetch_1.default,
 });
