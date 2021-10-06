@@ -32,3 +32,5 @@ export const user_resolvers = {
     },
   },
 };
+
+console.log("update");
