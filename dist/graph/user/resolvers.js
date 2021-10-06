@@ -102,4 +102,5 @@ exports.user_resolvers = {
         },
     },
 };
+console.log("update");
 //# sourceMappingURL=resolvers.js.map

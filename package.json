@@ -6,7 +6,7 @@
   "license": "ISC",
   "main": "./dist/app.js",
   "engines": {
-    "node": "14.x",
+    "node": "14.15.3",
     "yarn": "1.22.10"
   },
   "scripts": {
