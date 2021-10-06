@@ -6,7 +6,8 @@
   "license": "ISC",
   "main": "./dist/app.js",
   "engines": {
-    "node": "14.x"
+    "node": "14.x",
+    "yarn": "1.22.10"
   },
   "scripts": {
     "watch": "tsc -w",
