@@ -8,6 +8,7 @@ export const registerCompany = async (req: any, res: any) => {
   let user = new User(req.body);
   try {
     const result = await user.register();
+    console.log("i am running inside register user controller");
     console.log("RESULTS", result);
     //@ts-ignore
     const { company_name, email } = result;
