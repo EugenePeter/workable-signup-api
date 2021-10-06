@@ -113,23 +113,29 @@ var User = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
+                        _a.trys.push([0, 3, , 4]);
+                        // Step #1: Validate user data
+                        this.cleanUp();
+                        return [4 /*yield*/, this.validate()];
+                    case 1:
+                        _a.sent();
+                        // Step #2: Only if there are no validation errors
+                        // then save the user data into a database
+                        if (this.errors.length > 0)
+                            throw this.errors;
                         salt = bcrypt_1.default.genSaltSync(10);
                         this.data.password = bcrypt_1.default.hashSync(this.data.password, salt);
                         console.log("THIS DATA:", this.data);
                         company = utils_1.Company.build(__assign({}, this.data));
                         return [4 /*yield*/, company.save()];
-                    case 1:
-                        _a.sent();
-                        console.log("COMPANY:", company);
-                        console.log("DOES IT HAVE ERRORS: ", this.errors);
-                        console.log("i am running inside register user model");
-                        return [2 /*return*/, company];
                     case 2:
+                        _a.sent();
+                        return [2 /*return*/, company];
+                    case 3:
                         e_1 = _a.sent();
                         console.log("REGISTER ERROR:", e_1);
                         throw this.errors;
-                    case 3: return [2 /*return*/];
+                    case 4: return [2 /*return*/];
                 }
             });
         });

@@ -66,11 +66,11 @@ export class User<T extends Event> {
   async register() {
     try {
       // Step #1: Validate user data
-      // this.cleanUp();
-      // await this.validate();
+      this.cleanUp();
+      await this.validate();
       // Step #2: Only if there are no validation errors
       // then save the user data into a database
-      // if (this.errors.length > 0) throw this.errors;
+      if (this.errors.length > 0) throw this.errors;
 
       // hash user password
       let salt = bcrypt.genSaltSync(10);
@@ -80,13 +80,7 @@ export class User<T extends Event> {
         ...this.data,
       });
       await company.save();
-      console.log("COMPANY:", company);
-      console.log("DOES IT HAVE ERRORS: ", this.errors);
-      console.log("i am running inside register user model");
       return company;
-      return {
-        message: "yes",
-      };
     } catch (e) {
       console.log("REGISTER ERROR:", e);
       throw this.errors;
