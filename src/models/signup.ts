@@ -82,7 +82,7 @@ export class User<T extends Event> {
       await company.save();
       console.log("COMPANY:", company);
       console.log("DOES IT HAVE ERRORS: ", this.errors);
-      console.log("i am running inside register user model");
+      console.log("i am running inside register user model >>");
       return company;
       return {
         message: "yes",
