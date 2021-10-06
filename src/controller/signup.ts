@@ -19,7 +19,7 @@ export const registerCompany = async (req: any, res: any) => {
       email,
     });
   } catch (error: any) {
-    console.log("CONTROLLER SIGN UP ERROR:", error);
+    console.log("ERROR FROM SIGN UP CONTROLLER:", error);
     res.status(400).json({
       successfuly_registered: false,
       errorMessage: error,
