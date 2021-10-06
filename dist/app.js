@@ -76,7 +76,6 @@ var startServer = function () { return __awaiter(void 0, void 0, void 0, functio
                 return [4 /*yield*/, mongoose_1.default.connect(CONNECTIONSTRING, {
                         useNewUrlParser: true,
                         useUnifiedTopology: true,
-                        useCreateIndex: true,
                     })];
             case 2:
                 //@ts-ignore
