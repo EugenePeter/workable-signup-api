@@ -1,5 +1,5 @@
 {
-  "name": "many_pixels-test",
+  "name": "workable-signup-api",
   "version": "1.0.0",
   "description": "unsplash api wrapped in graphql api",
   "author": "Eugene Peter Maestrado",
@@ -9,7 +9,7 @@
     "watch": "tsc -w",
     "develop": "ts-node-dev ./src/app.ts",
     "start": "rm -rf dist && tsc && nodemon dist/app.js",
-    "build": "rm -rf dist && tsc"
+    "build": "tsc"
   },
   "dependencies": {
     "@types/node-fetch": "^2.5.10",
