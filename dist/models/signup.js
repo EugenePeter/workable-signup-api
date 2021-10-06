@@ -123,7 +123,7 @@ var User = /** @class */ (function () {
                         _a.sent();
                         console.log("COMPANY:", company);
                         console.log("DOES IT HAVE ERRORS: ", this.errors);
-                        console.log("i am running inside register user model >>");
+                        console.log("i am running inside register user model");
                         return [2 /*return*/, company];
                     case 2:
                         e_1 = _a.sent();

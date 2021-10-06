@@ -34,13 +34,13 @@ const startServer = async () => {
     //@ts-ignore
     await mongoose.connect(CONNECTIONSTRING);
     console.log("CONNECTED TO MONGODB");
+    initializeApolloServer(app);
+    app.listen(process.env.PORT, () => {
+      console.log(`apps is running on PORT: ${process.env.PORT}`);
+    });
   } catch (e) {
     console.log("error:", e);
   }
-  initializeApolloServer(app);
-  app.listen(process.env.PORT, () => {
-    console.log(`apps is running on PORT: ${process.env.PORT}`);
-  });
 };
 
 startServer();
