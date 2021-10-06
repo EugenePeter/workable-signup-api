@@ -128,7 +128,7 @@ var User = /** @class */ (function () {
                     case 2:
                         e_1 = _a.sent();
                         console.log("REGISTER ERROR:", e_1);
-                        return [3 /*break*/, 3];
+                        throw this.errors;
                     case 3: return [2 /*return*/];
                 }
             });

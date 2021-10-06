@@ -89,7 +89,7 @@ export class User<T extends Event> {
       };
     } catch (e) {
       console.log("REGISTER ERROR:", e);
-      // throw this.errors;
+      throw this.errors;
     }
   }
 }
