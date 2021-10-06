@@ -43,23 +43,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.initializeApolloServer = void 0;
 var apollo_server_express_1 = require("apollo-server-express");
 var apollo_server_express_2 = require("apollo-server-express");
-var resolvers_1 = require("./artwork/resolvers");
-var typeDefs_1 = require("./artwork/typeDefs");
 var user_1 = require("./user");
-var unsplash_api_1 = require("../utils/unsplash.api");
 var defaultTypeDefs = (0, apollo_server_express_2.gql)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  type Query {\n    _empty: String\n  }\n"], ["\n  type Query {\n    _empty: String\n  }\n"])));
 var schema = (0, apollo_server_express_1.makeExecutableSchema)({
-    typeDefs: [defaultTypeDefs, typeDefs_1.artist_type_Defs, user_1.user_type_defs],
-    resolvers: [resolvers_1.artist_resolvers, user_1.user_resolvers],
+    typeDefs: [defaultTypeDefs, user_1.user_type_defs],
+    resolvers: [user_1.user_resolvers],
 });
 var initializeApolloServer = function (app) { return __awaiter(void 0, void 0, void 0, function () {
     var apolloServer;
     return __generator(this, function (_a) {
         apolloServer = new apollo_server_express_1.ApolloServer({
             schema: schema,
-            context: {
-                all_photos: unsplash_api_1.getAllPhotos,
-            },
+            context: {},
         });
         apolloServer.applyMiddleware({ app: app });
         console.log("APOLLO SERVER INITIALIZED");

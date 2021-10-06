@@ -1,6 +1,6 @@
 import { defaultCipherList } from "constants";
 import express from "express";
-import { registerCompany, login } from "../controller";
+import { registerCompany } from "../controller";
 
 const router = express.Router();
 
@@ -10,11 +10,5 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/registerCompany", registerCompany);
-// router.get("/registerCompany", (req, res) => {
-//   console.log("IAM BEING CALLED FROM REGISTER COMPANY");
-//   res.send("hi");
-// });
-
-router.post("/login", login);
 
 export default router;

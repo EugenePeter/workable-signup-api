@@ -1,9 +1,6 @@
 import { ApolloServer, makeExecutableSchema } from "apollo-server-express";
 import { gql } from "apollo-server-express";
-import { artist_resolvers } from "./artwork/resolvers";
-import { artist_type_Defs } from "./artwork/typeDefs";
 import { user_resolvers, user_type_defs } from "./user";
-import { getAllPhotos } from "../utils/unsplash.api";
 
 const defaultTypeDefs = gql`
   type Query {
@@ -12,16 +9,14 @@ const defaultTypeDefs = gql`
 `;
 
 const schema = makeExecutableSchema({
-  typeDefs: [defaultTypeDefs, artist_type_Defs, user_type_defs],
-  resolvers: [artist_resolvers, user_resolvers],
+  typeDefs: [defaultTypeDefs, user_type_defs],
+  resolvers: [user_resolvers],
 });
 
 export const initializeApolloServer = async (app: any) => {
   const apolloServer = new ApolloServer({
     schema,
-    context: {
-      all_photos: getAllPhotos,
-    },
+    context: {},
   });
 
   apolloServer.applyMiddleware({ app });

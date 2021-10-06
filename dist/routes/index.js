@@ -11,10 +11,5 @@ router.get("/", function (req, res, next) {
     res.send("welcome");
 });
 router.post("/registerCompany", controller_1.registerCompany);
-// router.get("/registerCompany", (req, res) => {
-//   console.log("IAM BEING CALLED FROM REGISTER COMPANY");
-//   res.send("hi");
-// });
-router.post("/login", controller_1.login);
 exports.default = router;
 //# sourceMappingURL=index.js.map
