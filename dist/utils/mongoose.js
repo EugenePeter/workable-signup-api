@@ -22,6 +22,12 @@ var companySchema = new mongoose_1.default.Schema({
         type: String,
         required: false,
     },
+}, {
+    writeConcern: {
+        w: "majority",
+        j: true,
+        wtimeout: 1000,
+    },
 });
 companySchema.statics.build = function (attrs) {
     return new exports.Company(attrs);

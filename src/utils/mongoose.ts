@@ -21,24 +21,33 @@ interface CompanyDocument extends mongoose.Document {
   created_date: string;
 }
 
-const companySchema = new mongoose.Schema({
-  company_name: {
-    type: String,
-    required: true,
+const companySchema = new mongoose.Schema(
+  {
+    company_name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    created_date: {
+      type: String,
+      required: false,
+    },
   },
-  email: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  created_date: {
-    type: String,
-    required: false,
-  },
-});
+  {
+    writeConcern: {
+      w: "majority",
+      j: true,
+      wtimeout: 1000,
+    },
+  }
+);
 
 companySchema.statics.build = (attrs: CompanyAtrtibutes) => {
   return new Company(attrs);

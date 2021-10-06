@@ -32,7 +32,11 @@ const startServer = async () => {
 
   try {
     //@ts-ignore
-    await mongoose.connect(CONNECTIONSTRING);
+    await mongoose.connect(CONNECTIONSTRING, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    });
     console.log("CONNECTED TO MONGODB");
     initializeApolloServer(app);
     app.listen(process.env.PORT, () => {
