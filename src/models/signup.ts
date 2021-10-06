@@ -73,17 +73,17 @@ export class User<T extends Event> {
       // if (this.errors.length > 0) throw this.errors;
 
       // hash user password
-      // let salt = bcrypt.genSaltSync(10);
-      // this.data.password = bcrypt.hashSync(this.data.password, salt);
-      // console.log("THIS DATA:", this.data);
-      // const company = Company.build({
-      //   ...this.data,
-      // });
-      // await company.save();
-      // console.log("COMPANY:", company);
-      // return company;
-      console.log(this.errors);
+      let salt = bcrypt.genSaltSync(10);
+      this.data.password = bcrypt.hashSync(this.data.password, salt);
+      console.log("THIS DATA:", this.data);
+      const company = Company.build({
+        ...this.data,
+      });
+      await company.save();
+      console.log("COMPANY:", company);
+      console.log("DOES IT HAVE ERRORS: ", this.errors);
       console.log("i am running inside register user model");
+      return company;
       return {
         message: "yes",
       };
